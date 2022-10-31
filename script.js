@@ -12,8 +12,9 @@ function randomInt(min,max) {
 } 
 
 function getRandomItem(list) {
-  return list[randomInt(list.length)]
+  return list[randomInt(0,list.length - 1)]
 }
+
 
 function generatePassword(){
 
@@ -54,7 +55,7 @@ function generatePassword(){
  if (passUppercase === true) {
   optionArr.push(uppercaseArr)
  }
- 
+
  var generatedPass = ""
 
  for (var index = 0; index < passLength; index++) {
