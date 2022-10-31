@@ -28,9 +28,19 @@ console.log (passwordOptions)
 if (passwordOptions.passNumbers){
   possibleCharacters.concat(numbers)
 }
+if(passwordOptions.passSpecialCharacters) {
+  possibleCharacters.concat(possibleCharacters)
+}
+if(passwordOptions.passLowerCase){
+  lowerCase.concat(lowerCase)
+}
 for (let index = 0; index < passwordOptions.passLength; index++) {
   const element = possibleCharacters[index];
   console.log(element)
+}
+for (let index = 0; index < passwordOptions.passLength; index++) {
+  const element = numbers[index];
+  
 }
 }
 
