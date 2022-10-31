@@ -1,49 +1,63 @@
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var numbers = ["0","1","2","3","4","5","6","7","8","9"]
-var lowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
-var upperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-var possibleCharacters = ["!","@","#","$","%","^","&","*","(",")"]
-var result = []
 
-function getOptions (){
-var passLength = parseInt (prompt("how many characters would you like in your password?"))
-var passSpecialCharacters = confirm("click okay for special characters")
-var passNumbers = confirm("click okay for numbers")
-var passLowerCase = confirm("click okay for lower case")
-var passUpperCase = confirm("click okay for upper case")
-var passwordOptions = {
-  passSpecialCharacters: passSpecialCharacters, 
-  passNumbers: passNumbers,
-  passLowerCase: passLowerCase,
-  passUpperCase: passUpperCase,
-  passLength: passLength
+function randomInt(min,max){
+  return Math.floor(math.random()*(max - min) + min)
+} 
+
+function getRandomItem(list){
+  return list[randomInt(0,list.length - 1)]
 }
-return passwordOptions
-}
-function generatePassword (){
-var passwordOptions = getOptions () 
-console.log (passwordOptions)
-if (passwordOptions.passNumbers){
-  possibleCharacters.concat(numbers)
-}
-if(passwordOptions.passSpecialCharacters) {
-  possibleCharacters.concat(possibleCharacters)
-}
-if(passwordOptions.passLowerCase){
-  lowerCase.concat(lowerCase)
-}
-for (let index = 0; index < passwordOptions.passLength; index++) {
-  const element = possibleCharacters[index];
-  console.log(element)
-}
-for (let index = 0; index < passwordOptions.passLength; index++) {
-  const element = numbers[index];
+
+function generatePassword(){
+
+  var userInput = window.prompt("how long do you want your password to be?")
   
-}
-}
+  var passLength = parseInt(userInput)
 
+  if(isNaN(passLength)){
+   window.alert("that's not a number") 
+   return
+ }
+
+ if(passLength < 8 || passLength > 128 ){
+  window.alert ("password length should be between 8 and 128 characters")
+  return
+ }
+
+ var passNumbers = window.confirm("would you like to include numbers in your password?")
+ var passSymbols = window.confirm("would you like to include symbols in your password?")
+ var passLowercase = window.confirm("would you like to include lowercase characters in your password?")
+ var passUppercase = window.confirm("would you like to include uppercase characters in your password?")
+
+ var numberArr = ["0","1","2","3","4","5","6","7","8","9"]
+ var symbolArr = ["!","@","#","$","%","&","*"]
+ var lowercaseArr = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+ var uppercaseArr = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+ var optionArr = []
+
+ if (passNumbers === true) {
+  optionArr.push(numberArr)
+ }
+ if (passSymbols === true) {
+  optionArr.push(symbolArr)
+ }
+ if (passLowercase === true) {
+  optionArr.push(lowercaseArr)
+ }
+ if (passUppercase === true) {
+  optionArr.push(uppercaseArr)
+ }
+ 
+ var generatedPass = ""
+
+ for (var index = 0; index < passLength; index++) {
+  var randomList = getRandomItem(optionArr)
+  var randomChar = getRandomItem(randomList)
+  console.log(randomChar)
+ }
+}
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
