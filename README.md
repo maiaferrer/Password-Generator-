@@ -1,4 +1,5 @@
 # Password-Generator-
+![6845853E-F601-4C58-9881-6B4AB4A9D364_1_201_a](https://user-images.githubusercontent.com/114897110/199150047-d6daaac1-6a6f-4999-876f-e1b61b022c7f.jpeg)
 
 ## Project Description
 
